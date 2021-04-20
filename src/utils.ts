@@ -21,7 +21,7 @@ export function getQueueOffset(totalRenters: number, overlap: number) {
     overlap = 1;
   }
 
-  var span = _getQueueSpan(
+  const span = _getQueueSpan(
     256, // total number of queues
     totalRenters, // total number of renters in pool
     0.999 // percentage

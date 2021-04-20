@@ -36,7 +36,8 @@ function App() {
   ]
 
   const data: GridRowData[] = _.times(totalRenters, (n) => {
-    const renterPk = hdkey.fromExtendedKey(privateKey).derive('m/' + (n + 1))
+    const renterIndex = n + 1;
+    const renterPk = hdkey.fromExtendedKey(privateKey).derive(`m/${renterIndex}'`)
     const nodeId = getNodeId(renterPk);
     const offset = getQueueOffset(totalRenters, overlap);
     const exchangeByteStart = Buffer.from(nodeId, 'hex')[0] - offset;
@@ -59,23 +60,17 @@ function App() {
       <Form>
         <FormGroup>
           <Form.Label>Complex Private Key</Form.Label>
-          <Form.Control value={privateKey} onChange={(e) => {
-            setPrivateKey(e.target.value)
-          }}>
+          <Form.Control value={privateKey} onChange={(e) => setPrivateKey(e.target.value)}>
 
           </Form.Control>
-          <Button onClick={() => {
-            setPrivateKey(hdkey.fromMasterSeed(crypto.randomBytes(16)).privateExtendedKey);
-          }}>Generate a new key</Button>
+          <Button onClick={() => setPrivateKey(hdkey.fromMasterSeed(crypto.randomBytes(16)).privateExtendedKey)}>Generate a new key</Button>
         </FormGroup>
         <Row>
           <Col>
 
             <FormGroup>
               <Form.Label>Total Renters</Form.Label>
-              <Form.Control value={totalRenters} type="number" onChange={(e) => {
-                setTotalRenters(parseInt(e.target.value, 10))
-              }}>
+              <Form.Control value={totalRenters} type="number" onChange={(e) => setTotalRenters(parseInt(e.target.value, 10))}>
 
               </Form.Control>
             </FormGroup>
@@ -84,29 +79,13 @@ function App() {
           <Col>
             <FormGroup>
               <Form.Label>Overlap</Form.Label>
-              <Form.Control value={overlap} type="number" onChange={(e) => {
-                setOverlap(parseInt(e.target.value, 10))
-              }}>
-
+              <Form.Control value={overlap} type="number" onChange={(e) => setOverlap(parseInt(e.target.value, 10))}>
               </Form.Control>
             </FormGroup>
           </Col>
         </Row>
 
-
-        {/*
-        <div style={{ height: 700, width: '100%' }}>
-          <DataGrid
-            rowsPerPageOptions={[256, 512, 1024]}
-            disableSelectionOnClick
-            rows={data} columns={dataColumns}
-            rowHeight={100}
-            pageSize={5} checkboxSelection />
-        </div>
-*/}
-
         <Table>
-
           {data.map((row) => {
             return <TableRow>
 
