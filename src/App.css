@@ -1,0 +1,12 @@
+.MuiSlider-rail {
+  color: #f0f0f0;
+}
+
+.MuiSlider-track {
+  color: red;
+}
+
+.MuiSlider-mark {
+  color: #f0f0f0;
+  width: 1px;
+}

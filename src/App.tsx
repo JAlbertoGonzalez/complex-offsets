@@ -67,7 +67,9 @@ function App() {
 
         <Table>
           {data.map((row) => {
-            return <TableRow>
+            const start = parseInt(Buffer.from(row.exchangeByteStart).toString(), 16);
+            const end = parseInt(Buffer.from(row.exchangeByteEnd).toString(), 16);
+            return <TableRow style={{ backgroundColor: start > end ? '#faa' : 'transparent' }}>
 
               <TableCell width={10}>{row.id}</TableCell>
               <TableCell width={10}>{row.nodeId}</TableCell>
@@ -75,12 +77,12 @@ function App() {
               <TableCell width={10}>{row.exchangeByteEnd}</TableCell>
               <TableCell>
                 <Slider
-                  marks
+                  track={start > end ? 'inverted' : undefined}
                   min={0}
                   max={256}
                   valueLabelDisplay="auto"
                   aria-labelledby="range-slider"
-                  value={[parseInt(Buffer.from(row.exchangeByteStart).toString(), 16), parseInt(Buffer.from(row.exchangeByteEnd).toString(), 16)]}
+                  value={[start, end]}
                   step={1} />
               </TableCell>
 
