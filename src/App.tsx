@@ -7,33 +7,12 @@ import crypto from 'crypto'
 import _ from 'lodash'
 import { DataGrid, GridColDef, GridRowData } from '@material-ui/data-grid';
 import { getNodeId, getQueueOffset } from './utils';
-
+import HDNode from 'hdkey';
 
 function App() {
-
   const [privateKey, setPrivateKey] = useState<string>(hdkey.fromMasterSeed(Buffer.from('1')).privateExtendedKey);
   const [totalRenters, setTotalRenters] = useState(10);
   const [overlap, setOverlap] = useState(1);
-
-  const dataColumns: GridColDef[] = [
-    { field: 'id', headerName: 'ID', width: 70 },
-    { field: 'nodeId', headerName: 'Renter ID', width: 350 },
-    {
-      headerName: 'Rabbit Range',
-      flex: 1,
-      field: 'rabbit',
-      renderCell: (x) => {
-        return <Slider
-          min={0}
-          max={256}
-          marks
-          valueLabelDisplay="auto"
-          aria-labelledby="range-slider"
-          value={[x.row.exchangeByteStart, x.row.exchangeByteEnd]}
-          step={1} />
-      }
-    }
-  ]
 
   const data: GridRowData[] = _.times(totalRenters, (n) => {
     const renterIndex = n + 1;
