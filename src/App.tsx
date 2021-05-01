@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
-import { Button, Col, Container, Form, FormGroup, Row } from 'react-bootstrap';
-import { Slider, Table, TableCell, TableRow } from '@material-ui/core';
+import { Container, Button, Col, Form, FormGroup, Row } from 'react-bootstrap';
+import { FormControl, Slider, Table, TableCell, TableRow, TextField } from '@material-ui/core';
 import hdkey from 'hdkey'
 import crypto from 'crypto'
 import _ from 'lodash'
@@ -13,7 +13,17 @@ function App() {
   const [totalRenters, setTotalRenters] = useState(10);
   const [overlap, setOverlap] = useState(1);
 
-  const data: GridRowData[] = _.times(totalRenters, (n) => {
+
+  const isValidPrivateKey = (() => {
+    try {
+      hdkey.fromExtendedKey(privateKey);
+      return true;
+    } catch {
+      return false;
+    }
+  })();
+
+  const data: GridRowData[] = _.times(isValidPrivateKey ? totalRenters : 0, (n) => {
     const renterIndex = n + 1;
     const complexPk: any = hdkey.fromExtendedKey(privateKey)
     const renterPk = complexPk.deriveChild(renterIndex);
@@ -35,33 +45,45 @@ function App() {
   });
 
   return (
-    <Container fluid>
-      <Form>
-        <FormGroup>
-          <Form.Label>Complex Private Key</Form.Label>
-          <Form.Control value={privateKey} onChange={(e) => setPrivateKey(e.target.value)}></Form.Control>
-          <Button onClick={() => setPrivateKey(hdkey.fromMasterSeed(crypto.randomBytes(16)).privateExtendedKey)}>Generate a new key</Button>
-        </FormGroup>
+    <Container fluid style={{ marginTop: 20 }}>
+
+      <TextField
+        error={!isValidPrivateKey}
+        label="Complex Private Key"
+        onChange={(e) => setPrivateKey(e.target.value)}
+        value={privateKey}
+        variant="outlined"
+        fullWidth
+      />
+      <Button onClick={() => setPrivateKey(hdkey.fromMasterSeed(crypto.randomBytes(16)).privateExtendedKey)}>Generate a new key</Button>
+
+
+
+      <Form style={{ marginTop: 20 }}>
         <Row>
           <Col>
-
-            <FormGroup>
-              <Form.Label>Total Renters</Form.Label>
-              <Form.Control value={totalRenters} type="number" onChange={(e) => setTotalRenters(parseInt(e.target.value, 10))}>
-              </Form.Control>
-            </FormGroup>
+            <TextField
+              label="Total Renters"
+              type="number"
+              onChange={(e) => setTotalRenters(parseInt(e.target.value, 10))} value={totalRenters}
+              variant="outlined"
+              fullWidth
+            />
           </Col>
 
           <Col>
-            <FormGroup>
-              <Form.Label>Overlap</Form.Label>
-              <Form.Control value={overlap} type="number" onChange={(e) => setOverlap(parseInt(e.target.value, 10))}>
-              </Form.Control>
-            </FormGroup>
+            <TextField
+              label="Overlap"
+              type="number"
+              onChange={(e) => setOverlap(parseInt(e.target.value, 10))}
+              value={overlap}
+              variant="outlined"
+              fullWidth
+            />
           </Col>
         </Row>
 
-        <Table>
+        <Table style={{ marginTop: 20 }}>
           {data.map((row) => {
             const start = parseInt(Buffer.from(row.exchangeByteStart).toString(), 16);
             const end = parseInt(Buffer.from(row.exchangeByteEnd).toString(), 16);
