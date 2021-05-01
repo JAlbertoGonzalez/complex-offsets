@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/complex-offsets/static/css/main.bab0b925.chunk.css",
-    "main.js": "/complex-offsets/static/js/main.e2825009.chunk.js",
-    "main.js.map": "/complex-offsets/static/js/main.e2825009.chunk.js.map",
-    "runtime-main.js": "/complex-offsets/static/js/runtime-main.0ed14849.js",
-    "runtime-main.js.map": "/complex-offsets/static/js/runtime-main.0ed14849.js.map",
+    "main.css": "/complex-offsets/static/css/main.61b02d3d.chunk.css",
+    "main.js": "/complex-offsets/static/js/main.411c9f6c.chunk.js",
+    "main.js.map": "/complex-offsets/static/js/main.411c9f6c.chunk.js.map",
+    "runtime-main.js": "/complex-offsets/static/js/runtime-main.1277b998.js",
+    "runtime-main.js.map": "/complex-offsets/static/js/runtime-main.1277b998.js.map",
     "static/css/2.4c97ca4f.chunk.css": "/complex-offsets/static/css/2.4c97ca4f.chunk.css",
-    "static/js/2.4eb39eff.chunk.js": "/complex-offsets/static/js/2.4eb39eff.chunk.js",
-    "static/js/2.4eb39eff.chunk.js.map": "/complex-offsets/static/js/2.4eb39eff.chunk.js.map",
-    "static/js/3.9fc5e88a.chunk.js": "/complex-offsets/static/js/3.9fc5e88a.chunk.js",
-    "static/js/3.9fc5e88a.chunk.js.map": "/complex-offsets/static/js/3.9fc5e88a.chunk.js.map",
+    "static/js/2.9c4000ff.chunk.js": "/complex-offsets/static/js/2.9c4000ff.chunk.js",
+    "static/js/2.9c4000ff.chunk.js.map": "/complex-offsets/static/js/2.9c4000ff.chunk.js.map",
+    "static/js/3.d4d89bd9.chunk.js": "/complex-offsets/static/js/3.d4d89bd9.chunk.js",
+    "static/js/3.d4d89bd9.chunk.js.map": "/complex-offsets/static/js/3.d4d89bd9.chunk.js.map",
     "index.html": "/complex-offsets/index.html",
     "static/css/2.4c97ca4f.chunk.css.map": "/complex-offsets/static/css/2.4c97ca4f.chunk.css.map",
-    "static/css/main.bab0b925.chunk.css.map": "/complex-offsets/static/css/main.bab0b925.chunk.css.map",
-    "static/js/2.4eb39eff.chunk.js.LICENSE.txt": "/complex-offsets/static/js/2.4eb39eff.chunk.js.LICENSE.txt"
+    "static/css/main.61b02d3d.chunk.css.map": "/complex-offsets/static/css/main.61b02d3d.chunk.css.map",
+    "static/js/2.9c4000ff.chunk.js.LICENSE.txt": "/complex-offsets/static/js/2.9c4000ff.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.0ed14849.js",
+    "static/js/runtime-main.1277b998.js",
     "static/css/2.4c97ca4f.chunk.css",
-    "static/js/2.4eb39eff.chunk.js",
-    "static/css/main.bab0b925.chunk.css",
-    "static/js/main.e2825009.chunk.js"
+    "static/js/2.9c4000ff.chunk.js",
+    "static/css/main.61b02d3d.chunk.css",
+    "static/js/main.411c9f6c.chunk.js"
   ]
 }

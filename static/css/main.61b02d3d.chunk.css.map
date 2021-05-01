@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/App.css"],"names":[],"mappings":"AAAA,gBACE,aACF,CAEA,iBACE,SACF,CAEA,gBACE,aAAc,CACd,SACF","file":"main.61b02d3d.chunk.css","sourcesContent":[".MuiSlider-rail {\n  color: #f0f0f0;\n}\n\n.MuiSlider-track {\n  color: red;\n}\n\n.MuiSlider-mark {\n  color: #f0f0f0;\n  width: 1px;\n}"]}
