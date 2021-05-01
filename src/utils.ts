@@ -3,7 +3,8 @@ import crypto from 'crypto';
 import assert from 'assert';
 
 export function getNodeId(key: HDNode) {
-  const sha256 = crypto.createHash('sha256').update(key.publicExtendedKey).digest();
+  const buffer = Buffer.from(key.publicKey)
+  const sha256 = crypto.createHash('sha256').update(buffer).digest();
   return crypto.createHash('ripemd160').update(sha256).digest('hex').toString();
 }
 

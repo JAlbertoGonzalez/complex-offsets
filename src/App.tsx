@@ -37,7 +37,8 @@ function App() {
 
   const data: GridRowData[] = _.times(totalRenters, (n) => {
     const renterIndex = n + 1;
-    const renterPk = hdkey.fromExtendedKey(privateKey).derive(`m/${renterIndex}'`)
+    const complexPk: any = hdkey.fromExtendedKey(privateKey)
+    const renterPk = complexPk.deriveChild(renterIndex);
     const nodeId = getNodeId(renterPk);
     const offset = getQueueOffset(totalRenters, overlap);
     const exchangeByteStart = Buffer.from(nodeId, 'hex')[0] - offset;
