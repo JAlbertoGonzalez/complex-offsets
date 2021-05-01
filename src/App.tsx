@@ -5,9 +5,8 @@ import { Slider, Table, TableCell, TableRow } from '@material-ui/core';
 import hdkey from 'hdkey'
 import crypto from 'crypto'
 import _ from 'lodash'
-import { DataGrid, GridColDef, GridRowData } from '@material-ui/data-grid';
+import { GridRowData } from '@material-ui/data-grid';
 import { getNodeId, getQueueOffset } from './utils';
-import HDNode from 'hdkey';
 
 function App() {
   const [privateKey, setPrivateKey] = useState<string>(hdkey.fromMasterSeed(Buffer.from('1')).privateExtendedKey);
@@ -40,9 +39,7 @@ function App() {
       <Form>
         <FormGroup>
           <Form.Label>Complex Private Key</Form.Label>
-          <Form.Control value={privateKey} onChange={(e) => setPrivateKey(e.target.value)}>
-
-          </Form.Control>
+          <Form.Control value={privateKey} onChange={(e) => setPrivateKey(e.target.value)}></Form.Control>
           <Button onClick={() => setPrivateKey(hdkey.fromMasterSeed(crypto.randomBytes(16)).privateExtendedKey)}>Generate a new key</Button>
         </FormGroup>
         <Row>
@@ -51,7 +48,6 @@ function App() {
             <FormGroup>
               <Form.Label>Total Renters</Form.Label>
               <Form.Control value={totalRenters} type="number" onChange={(e) => setTotalRenters(parseInt(e.target.value, 10))}>
-
               </Form.Control>
             </FormGroup>
           </Col>
@@ -70,7 +66,6 @@ function App() {
             const start = parseInt(Buffer.from(row.exchangeByteStart).toString(), 16);
             const end = parseInt(Buffer.from(row.exchangeByteEnd).toString(), 16);
             return <TableRow style={{ backgroundColor: start > end ? '#faa' : 'transparent' }}>
-
               <TableCell width={10}>{row.id}</TableCell>
               <TableCell width={10}>{row.nodeId}</TableCell>
               <TableCell width={10}>{row.exchangeByteStart}</TableCell>
@@ -85,10 +80,7 @@ function App() {
                   value={[start, end]}
                   step={1} />
               </TableCell>
-
             </TableRow>
-
-
           })}
         </Table>
 
